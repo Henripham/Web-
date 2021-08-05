@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Ume</title>
+	</head>
+	<body>
+		
+
+		<p id="demo"></p>
+		<p id="testing"></p>
+		<script type='module' src="Script.js"></script>
+
+		<script>
+			const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+			let arr2;
+			arr2 = [...arr1];
+			document.getElementById('demo').innerHTML = arr2;
+		</script>
+
+		<script>
+			// nested objects
+			const HIGH_TEMPERATURES = {
+				yesterday: { low: 61, high: 75 },
+				today: { low: 64, high: 77 },
+				tomorrow: { low: 68, high: 80 },
+			};
+			// original assignment
+			// const x = HIGH_TEMPERATURES.today;
+			// const y = HIGH_TEMPERATURES.tomorrow;
+			// const z = HIGH_TEMPERATURES.yesterday;
+
+			// WITH ******destructing assignment******
+			let val;
+			val = {
+				today: { low: lowToday, high: highToday },
+			} = HIGH_TEMPERATURES;
+			console.log(HIGH_TEMPERATURES);
+
+			// assign variables from arrays
+			// const [q,,,p] = [1,2,3,4,5];
+			// console.log(q,p);
+			let a = 8,
+				b = 6;
+			[a, b] = [b, a];
+			console.log(a, b);
+			// rest Operator to reassign array elements
+			// const [q,p, ...rest] = [1,2,3,4,5];
+			// console.log(rest);
+			const source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+			function removeFirstTwo(list) {
+				const [a, b, ...arr] = list;
+				return arr;
+			}
+
+			const arr = removeFirstTwo(source);
+			console.log(arr);
+			console.log(source);
+			// Pass an object as a function's parameters
+			const stats = {
+				max: 56.78,
+				standard_deviation: 4.34,
+				median: 34.54,
+				mode: 23.87,
+				min: -0.75,
+				average: 35.85,
+			};
+			const half = ({ max, min }) => (max + min) / 2;
+			console.log(half);
+		</script>
+
+		<script>
+			let price = 10;
+			let VAT = 0.25;
+			let total = `Total: ${(price * (1 + VAT)).toFixed(2)}`;
+			document.getElementById('testing').innerHTML = total;
+
+			////////////////////////////////
+			const result = {
+				success: ['max-length', 'no-amd', 'prefer-arrow-functions'],
+				failure: ['no-var', 'var-on-top', 'linebreak'],
+				skipped: ['no-extra-semi', 'no-dup-keys'],
+			};
+			function makeList(arr) {
+				'use strict';
+				// Only change code below this line
+				const failureItems = [];
+				for (var i = 0; i < arr.length; i++) {
+					failureItems.push(`<li class="text-warning">${arr[i]}</li>`);
+				}
+				// Only change code above this line
+
+				return failureItems;
+			}
+			const failuresList = makeList(result.failure);
+		</script>
+
+		<script>
+			class Thermostat {
+				constructor(fahrenheit) {
+					this.fahrenheit = fahrenheit;
+				}
+				get temperature() {
+					return (5 / 9) * (this.fahrenheit - 32);
+				}
+				set temperature(celsius) {
+					this.fahrenheit = (celsius * 9.0) / 5 + 32;
+				}
+			}
+		</script>
+	</body>
+</html>
